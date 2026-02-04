@@ -433,6 +433,47 @@ strong {
     z-index: -1;
 }
 
+/* Parallax Tilt Effect */
+.portrait-frame {
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+}
+
+.portrait-frame:hover {
+    transform: perspective(1000px) rotateX(var(--rotateX, 0deg)) rotateY(var(--rotateY, 0deg));
+}
+
+.portrait-shine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.25) 0%,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(0, 0, 0, 0.1) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.portrait-frame:hover .portrait-shine {
+    opacity: 1;
+}
+
+.portrait-frame:hover .portrait-image img {
+    transform: scale(1.02);
+}
+
+.portrait-image img {
+    transition: transform 0.4s ease;
+}
+
 .hero-stats {
     display: flex;
     gap: var(--space-2xl);
