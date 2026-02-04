@@ -536,69 +536,50 @@ strong {
 ======================================== */
 .expertise {
     background: var(--color-cream);
+    padding: var(--space-3xl) 0;
 }
 
-.expertise-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-xl);
+.expertise-simple {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
 }
 
-.expertise-card {
-    background: var(--color-warm-white);
-    border-radius: var(--radius-lg);
-    padding: var(--space-2xl);
-    transition: all var(--transition-base);
-}
-
-.expertise-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-}
-
-.card-tag {
-    display: inline-block;
-    font-size: 0.6875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-coral);
-    background: rgba(224, 122, 95, 0.1);
-    padding: var(--space-xs) var(--space-md);
-    border-radius: var(--radius-full);
-    margin-bottom: var(--space-lg);
-}
-
-.expertise-card h3 {
-    font-family: var(--font-sans);
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: var(--space-lg);
-}
-
-.expertise-list {
+.expertise-tags {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: var(--space-md);
 }
 
-.expertise-list li {
+.expertise-tag {
+    font-family: var(--font-sans);
     font-size: 0.9375rem;
+    font-weight: 500;
     color: var(--color-text-secondary);
-    padding-left: var(--space-lg);
-    position: relative;
+    background: var(--color-warm-white);
+    padding: var(--space-sm) var(--space-xl);
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-sand);
+    transition: all var(--transition-base);
 }
 
-.expertise-list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.65em;
-    width: 6px;
-    height: 6px;
+.expertise-tag:hover {
+    border-color: var(--color-coral);
+    color: var(--color-coral);
+    transform: translateY(-2px);
+}
+
+.expertise-tag.featured {
+    background: var(--color-navy);
+    color: var(--color-cream);
+    border-color: var(--color-navy);
+}
+
+.expertise-tag.featured:hover {
     background: var(--color-coral);
-    border-radius: 50%;
-    opacity: 0.6;
+    border-color: var(--color-coral);
+    color: white;
 }
 
 /* ========================================
