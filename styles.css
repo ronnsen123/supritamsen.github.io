@@ -934,9 +934,26 @@ strong {
     align-items: center;
     justify-content: center;
     position: relative;
+    overflow: hidden;
+}
+
+.video-thumbnail img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.video-card:hover .video-thumbnail img {
+    transform: scale(1.05);
 }
 
 .play-icon {
+    position: relative;
+    z-index: 2;
     width: 72px;
     height: 72px;
     background: var(--color-coral);
@@ -945,6 +962,7 @@ strong {
     align-items: center;
     justify-content: center;
     transition: all var(--transition-base);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .video-card:hover .play-icon {
@@ -978,6 +996,14 @@ strong {
     font-family: var(--font-serif);
     font-size: 1.125rem;
     color: var(--color-navy);
+    margin-bottom: var(--space-sm);
+}
+
+.video-description {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: 0;
 }
 
 @media (max-width: 768px) {
@@ -1571,6 +1597,144 @@ strong {
 
     .stat-number {
         font-size: 1.5rem;
+    }
+}
+
+/* ========================================
+   Scroll Indicator
+======================================== */
+.scroll-indicator {
+    position: absolute;
+    bottom: var(--space-2xl);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: all var(--transition-base);
+}
+
+.scroll-indicator:hover {
+    color: var(--color-coral);
+}
+
+.scroll-text {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+.scroll-arrow {
+    width: 24px;
+    height: 24px;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.scroll-arrow svg {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(8px); }
+    60% { transform: translateY(4px); }
+}
+
+/* ========================================
+   Back to Top Button
+======================================== */
+.back-to-top {
+    position: fixed;
+    bottom: var(--space-2xl);
+    right: var(--space-2xl);
+    width: 48px;
+    height: 48px;
+    background: var(--color-coral);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all var(--transition-base);
+    z-index: 999;
+    box-shadow: var(--shadow-lg);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: var(--color-coral-dark);
+    transform: translateY(-4px);
+}
+
+.back-to-top svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* ========================================
+   Animated Underline Links
+======================================== */
+.nav-link:not(.nav-cta),
+.social-link span,
+.company-name a {
+    position: relative;
+}
+
+.nav-link:not(.nav-cta)::after,
+.social-link span::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-coral);
+    transition: width var(--transition-base);
+}
+
+.nav-link:not(.nav-cta):hover::after,
+.social-link:hover span::after {
+    width: 100%;
+}
+
+/* ========================================
+   Staggered Tag Animation
+======================================== */
+.expertise-tag {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.expertise-tag:nth-child(1) { animation-delay: 0.1s; }
+.expertise-tag:nth-child(2) { animation-delay: 0.15s; }
+.expertise-tag:nth-child(3) { animation-delay: 0.2s; }
+.expertise-tag:nth-child(4) { animation-delay: 0.25s; }
+.expertise-tag:nth-child(5) { animation-delay: 0.3s; }
+.expertise-tag:nth-child(6) { animation-delay: 0.35s; }
+.expertise-tag:nth-child(7) { animation-delay: 0.4s; }
+.expertise-tag:nth-child(8) { animation-delay: 0.45s; }
+.expertise-tag:nth-child(9) { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 

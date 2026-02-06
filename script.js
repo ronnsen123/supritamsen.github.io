@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initHoverEffects();
     initCarousel();
     initPortraitTilt();
+    initBackToTop();
 });
 
 // ========================================
@@ -389,6 +390,31 @@ function initPortraitTilt() {
 
     portrait.addEventListener('mouseenter', () => {
         portrait.style.transition = 'transform 0.1s ease-out';
+    });
+}
+
+// ========================================
+// Back to Top Button
+// ========================================
+function initBackToTop() {
+    const backToTop = document.getElementById('back-to-top');
+    if (!backToTop) return;
+
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', throttle(() => {
+        if (window.pageYOffset > 500) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    }, 100));
+
+    // Scroll to top on click
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
 }
 
